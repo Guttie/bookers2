@@ -1,0 +1,52 @@
+<h2>User Info</h2>
+<%= image_tag('sample-author1.jpg') %>
+<table>
+  <tbody>
+    <tr></tr>
+    <tr>
+      <th>name</th>
+      <th><%= current_user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th>あああああああ</th>
+    </tr>
+  </tbody>
+</table>
+
+<h2>New Book</h2>
+<%= form_with model: @book, local:true do |f| %>
+  <label>Title</label>
+  <%= f.text_field :title %>
+  <label>Opinion</label>
+  <%= f.text_area :body %>
+  <%= f.submit "Create Book" %>
+<% end %>
+
+<h2>Book detail</h2>
+<table>
+  <tbody>
+    <tr>
+      <tr>
+        <td>
+          <%= image_tag('sample-author1.jpg') %> </ br>
+          <%= @book.user.name %>
+        </td>
+        <td>
+          <%= link_to @book.title, book_path(@book.id) %>
+        </td>
+        <td>
+          <%= @book.body %>
+        </td>
+        <% if @book.user == current_user %>
+          <td>
+            <%= link_to 'Edit', edit_book_path(@book.id) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', book_path(@book.id), method: :delete, data: {confirm:"Are you sure?"} %>
+          </td>
+        <% end %>
+      </tr>
+    </tr>
+  </tbody>
+</table>
