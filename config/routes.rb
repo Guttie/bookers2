@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get '/home/about', to: 'homes#about', as: 'about'
   
   resources :books
-  resources :users, except: [:create]
+  resources :users
   
 end

@@ -30,3 +30,29 @@
 .nav-link a{
   color: #fff;
 }
+
+div.field, div.actions, .form-group{
+    margin-bottom: 10px;
+}
+
+img{
+    vertical-align: middle;
+    border-style: none;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.table{
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.btn-success{
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
