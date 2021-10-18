@@ -1,5 +1,5 @@
 <h2>User Info</h2>
-<%= attachment_image_tag user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg" %>
+<%= attachment_image_tag user, :profile_image, :fill, 63, 63, fallback: "no_image2.jpg", size: "63x63" %>
 <table class="table">
   <tbody>
     <tr></tr>
@@ -14,7 +14,13 @@
   </tbody>
 </table>
 <div class="row">
-  <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
-    <i class="fas fa-user-cog"></i>
+  <% if @user == current_user %>
+    <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  <% else %>
+    <%= link_to user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
   <% end %>
 </div>
