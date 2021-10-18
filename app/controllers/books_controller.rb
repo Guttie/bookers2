@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    @user = current_user
     @book = Book.new
+    @books = Book.all
   end
 
   def create
@@ -13,13 +14,16 @@ class BooksController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @newbook = Book.new
     @book = Book.find(params[:id])
   end
-  
+
   def edit
+    @user = current_user
     @book = Book.find(params[:id])
   end
-  
+
   def update
     @book = Book.find(params[:id])
     @book.user_id == current_user.id
