@@ -7,10 +7,15 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book.id)
+    @newbook = Book.new(book_params)
+    @newbook.user = current_user
+    if @newbook.save
+      redirect_to book_path(@newbook.id), notice: "You have created book successfully."
+    else
+      @user = current_user
+      @books = Book.all
+      render :index
+    end
   end
 
   def show
@@ -34,7 +39,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to book_path(@book.id), notice: "You have updated book successfully."
     else
-      render :index
+      render :edit
     end
   end
 
