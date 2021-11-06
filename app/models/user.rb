@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  has_many :relationships, foreign_key: "follower", dependent: :destroy
+  has_many :followers, through: :relationships, source: :followed
+  
+  has_many :relationships, foreign_key: "followed", dependent: :destroy
+  has_many :followeds, through: :relationships, source: :follower
+  
   attachment :profile_image
 
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
