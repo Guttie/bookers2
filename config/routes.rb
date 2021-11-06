@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'relationships/following_users'
+  get 'relationships/follower_users'
   devise_for :users
 
   root to: 'homes#top'
