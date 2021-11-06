@@ -15,4 +15,5 @@ class RelationshipsController < ApplicationController
   #フォロワー一覧
   def follower_users
   end
+
 end
