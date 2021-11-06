@@ -9,7 +9,7 @@ class RelationshipsController < ApplicationController
   end
   
   #フォロー一覧
-  def following_users
+  def followings
   end
 
   #フォロワー一覧
