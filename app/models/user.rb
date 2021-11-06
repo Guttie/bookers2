@@ -11,8 +11,8 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #Userのfollowerから見たフォローしている人を取得
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #Userのfollowedから見たフォローされている人を取得
   
-  has_many :following_users, through: :relationships, source: :followed #自分がフォローしている人
-  has_many :follower_user, through: :reverse_of_relationships, source: :follower #自分がフォローされている人
+  has_many :followings, through: :relationships, source: :followed #自分がフォローしている人
+  has_many :followers, through: :reverse_of_relationships, source: :follower #自分がフォローされている人
   
   attachment :profile_image
 
