@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'relationships/following_users'
-  get 'relationships/follower_users'
   devise_for :users
 
   root to: 'homes#top'
@@ -11,11 +9,11 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  
+
   resources :users do
     resource :relationships, only: [:create, :destroy]
-    get 'followings', on: :member
-    get 'followers', on: :member
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
 
 end
