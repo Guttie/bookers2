@@ -10,33 +10,33 @@ class SearchesController < ApplicationController
   private
 
   def complete(value, model)
-    if model == 'User'
+    if model == 'user'
       User.where(name: value)
-    elsif model == 'Book'
+    elsif model == 'book'
       Book.where(title: value)
     end
   end
 
   def forward(value, model)
-    if model == 'User'
+    if model == 'user'
       User.where("name LIKE ?", "#{value}%")
-    elsif model == 'Book'
+    elsif model == 'book'
       Book.where("title LIKE ?", "#{value}%")
     end
   end
 
   def backward(value, model)
-    if model == 'User'
+    if model == 'user'
       User.where("name LIKE ?", "%#{value}")
-    elsif model == 'Book'
+    elsif model == 'book'
       Book.where("title LIKE ?", "%#{value}")
     end
   end
 
   def partial(value, model)
-    if model == 'User'
+    if model == 'user'
       User.where("name LIKE ?", "%#{value}%")
-    elsif model == 'Book'
+    elsif model == 'book'
       Book.where("title LIKE ?", "%#{value}%")
     end
   end
